@@ -7,6 +7,7 @@ import java.util.Optional;
 
 // Ninguno de estos métodos depende de nuestra base de datos, todos están escritos en términos de dominio
 // es decir de las clases que declaramos en ingles.
+// otra nomenclatura mas clara y util es nombre tal cual tabla para entidad y nombreTablaDto para dominio
 public interface ProductRepository {
     List<Product> getAll();
     Optional<List<Product>> getByCategory(int categoryId);

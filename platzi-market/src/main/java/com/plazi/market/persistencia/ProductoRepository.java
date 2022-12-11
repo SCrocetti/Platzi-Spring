@@ -5,14 +5,18 @@ import com.plazi.market.domain.repository.ProductRepository;
 import com.plazi.market.persistencia.crud.ProductoCrudRepository;
 import com.plazi.market.persistencia.entity.Producto;
 import com.plazi.market.persistencia.mapper.ProductMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 @Repository
 public class ProductoRepository implements ProductRepository {
+    // Ojo: para usar autowidred solo podes hacerlo con componentes de Spring
+    @Autowired
     private ProductoCrudRepository productoCrudRepository;
 
+    @Autowired
     private ProductMapper mapper;
     @Override
     public List<Product> getAll(){
@@ -42,7 +46,7 @@ public class ProductoRepository implements ProductRepository {
     public Product save(Product product) {
         return mapper.toProduct(productoCrudRepository.save(mapper.toProducto(product)));
     }
-    
+
     @Override
     public  void  delete(int idProducto){productoCrudRepository.deleteById(idProducto);}
 }

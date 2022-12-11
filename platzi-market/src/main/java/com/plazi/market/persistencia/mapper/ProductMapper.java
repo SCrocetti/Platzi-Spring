@@ -9,6 +9,7 @@ import org.mapstruct.Mappings;
 
 import java.util.List;
 
+// la parte del componentModel le indica a Spring que esta interfaz es un componente
 // el uses le dice al mapper que use el category mapper para mapear categorias
 @Mapper(componentModel = "spring",uses={CategoryMapper.class})
 public interface ProductMapper {

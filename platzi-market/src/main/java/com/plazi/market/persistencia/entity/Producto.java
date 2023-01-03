@@ -32,6 +32,13 @@ public class Producto {
     // Updatable permite modificar una categoria a partir de un producto
     @JoinColumn(name = "id_categria",insertable = false,updatable = false)
     private Categoria categoria;
+
+    public void setCategoria(Categoria categoria){
+        this.categoria=categoria;
+    }
+    public Categoria getCategoria(){
+        return this.categoria;
+    }
     public Integer getIdProducto() {
         return idProducto;
     }

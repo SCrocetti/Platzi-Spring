@@ -3,7 +3,7 @@ package com.plazi.market.domain;
 public class Product {
     private int productId;
     private String name;
-    private int catogoryId;
+    private int categoryId;
     private double price;
     private int stock;
     private boolean active;
@@ -25,12 +25,12 @@ public class Product {
         this.name = name;
     }
 
-    public int getCatogoryId() {
-        return catogoryId;
+    public int getCategoryId() {
+        return categoryId;
     }
 
-    public void setCatogoryId(int catogoryId) {
-        this.catogoryId = catogoryId;
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
     }
 
     public double getPrice() {

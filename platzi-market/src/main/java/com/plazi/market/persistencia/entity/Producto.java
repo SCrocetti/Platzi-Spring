@@ -30,7 +30,7 @@ public class Producto {
     @ManyToOne
     // Insertable permite o no crear nuevas categorias a partier de un producto
     // Updatable permite modificar una categoria a partir de un producto
-    @JoinColumn(name = "id_categria",insertable = false,updatable = false)
+    @JoinColumn(name = "id_categoria",insertable = false,updatable = false)
     private Categoria categoria;
 
     public void setCategoria(Categoria categoria){

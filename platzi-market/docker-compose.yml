@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  postgres:
+    container_name: postgres15
+    build:
+      context: ./DB
+      dockerfile: Dockerfile
+    networks:
+      - postgres
+    volumes:
+      - C:/docker_postgres_data:/var/lib/postgresql/data
+    
+    restart: always
+  springapp:
+    container_name: platzi_market
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:8080/tcp"
+    networks:
+      - postgres
+    restart: always
+  
+
+networks:
+  postgres:
+    name: platzi_market_postgres
+    driver: bridge

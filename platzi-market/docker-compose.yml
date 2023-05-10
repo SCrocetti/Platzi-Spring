@@ -7,24 +7,55 @@ services:
       context: ./DB
       dockerfile: Dockerfile
     networks:
-      - postgres
+      - postgres_net
     volumes:
       - C:/docker_postgres_data:/var/lib/postgresql/data
     
     restart: always
-  springapp:
-    container_name: platzi_market
+  nginx:
+    container_name: nginx_serv
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    ports:
+      - "5000:8090/tcp"
+    networks:
+      - nginx_net
+    restart: always
+  springapp1:
+    container_name: platzi_market_1
     build:
       context: .
       dockerfile: Dockerfile
-    ports:
-      - "5000:8080/tcp"
     networks:
-      - postgres
+      - postgres_net
+      - nginx_net
+    restart: always
+  springapp2:
+    container_name: platzi_market_2
+    build:
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      - postgres_net
+      - nginx_net
+    restart: always
+  springapp3:
+    container_name: platzi_market_3
+    build:
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      - postgres_net
+      - nginx_net
     restart: always
   
 
 networks:
-  postgres:
-    name: platzi_market_postgres
+  postgres_net:
+    name: postgres_network
     driver: bridge
+  nginx_net:
+    name: nginx_network
+    driver: bridge
+
